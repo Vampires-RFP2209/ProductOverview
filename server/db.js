@@ -1,10 +1,12 @@
 const { Client } = require('pg')
 require('dotenv').config()
 
+const PORT = 5432
+
 const db = new Client({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  port: 5432,
+  port: PORT,
   password: process.env.DB_PASS,
   database: process.env.DB_DATABASE,
 })
@@ -14,7 +16,7 @@ db.connect((err) => {
     console.log(err)
     return
   }
-  console.log(`Successfully connected to database`)
+  console.log(`Successfully connected to ${process.env.DB_DATABASE} database on port ${PORT}`)
 })
 
 // db.query(`select * from product`, (res, err) => {
