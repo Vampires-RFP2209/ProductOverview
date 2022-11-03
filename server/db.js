@@ -16,7 +16,7 @@ db.connect((err) => {
   console.log(`Successfully connected to database`)
 })
 
-db.query(`Select * from products`, (res, err) => {
+db.query(`select * from product`, (res, err) => {
   if (err) {
     console.log(err)
   } else {
