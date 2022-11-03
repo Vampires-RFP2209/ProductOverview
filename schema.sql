@@ -1,3 +1,7 @@
+----
+-- run \i '/Users/quyenhoang/Hack-Reactor-RFP2209/capstone/system-design-capstone/Products/schema.sql' in psql
+----
+
 DROP DATABASE IF EXISTS products;
 
 DROP TABLE IF EXISTS skus;
@@ -14,10 +18,10 @@ CREATE DATABASE products;
 
 CREATE TABLE product (
   "id" INT NOT NULL,
-  "name" VARCHAR(255) NOT NULL,
-  "slogan" VARCHAR(255) NOT NULL,
+  "name" TEXT NOT NULL,
+  "slogan" TEXT NOT NULL,
   "description" TEXT NOT NULL,
-  "category" VARCHAR(255) NOT NULL,
+  "category" TEXT NOT NULL,
   "default_price" VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
@@ -34,7 +38,7 @@ CSV HEADER;
 CREATE TABLE styles (
   "id" INT NOT NULL,
   "productID" INT NOT NULL,
-  "name" VARCHAR(255) NOT NULL,
+  "name" TEXT NOT NULL,
   "sale_price" VARCHAR(255) NULL DEFAULT NULL,
   "original_price" VARCHAR(255) NOT NULL,
   "default_style" BOOLEAN NOT NULL,
@@ -54,13 +58,13 @@ CSV HEADER;
 CREATE TABLE features (
   "id" INT NOT NULL,
   "productID" INT NOT NULL,
-  "feature" VARCHAR(255) NULL,
-  "value" VARCHAR(255) NULL,
+  "feature" TEXT NULL,
+  "value" TEXT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY("productID") REFERENCES product("id")
 );
 
-COPY features (id, "productID", feature, "value")
+COPY features (id, "productID", feature, value)
 FROM '/Users/quyenhoang/project-atelier-products/features.csv'
 DELIMITER ','
 CSV HEADER;
@@ -90,7 +94,7 @@ CSV HEADER;
 CREATE TABLE skus (
   "id" INT NOT NULL,
   "styleID" INT NOT NULL,
-  "size" VARCHAR(255) NOT NULL,
+  "size" VARCHAR(9) NOT NULL,
   "quantity" INT NOT NULL,
   PRIMARY KEY("id"),
   FOREIGN KEY("styleID") REFERENCES styles("id")
