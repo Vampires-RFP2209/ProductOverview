@@ -2,15 +2,15 @@
 -- run \i '/Users/quyenhoang/Hack-Reactor-RFP2209/capstone/system-design-capstone/Products/schema.sql' in psql
 ----
 
-DROP DATABASE IF EXISTS products;
+-- DROP DATABASE IF EXISTS products;
 
-DROP TABLE IF EXISTS skus;
-DROP TABLE IF EXISTS photos;
-DROP TABLE IF EXISTS styles;
-DROP TABLE IF EXISTS features;
-DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS skus CASCADE;
+DROP TABLE IF EXISTS photos CASCADE;
+DROP TABLE IF EXISTS styles CASCADE;
+DROP TABLE IF EXISTS features CASCADE;
+DROP TABLE IF EXISTS product CASCADE;
 
-CREATE DATABASE products;
+-- CREATE DATABASE products;
 
 ----
 -- Table 'product'
