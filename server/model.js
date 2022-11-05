@@ -1,5 +1,37 @@
 const { db } = require('./db')
 
+const grabData = (productID, callback) => {
+  const queryStylesAndPhotos = `SELECT s.id, s.name, s.original_price, s.sale_price, s.default_style,
+  json_agg(json_build_object('thumbnail_url', p.thumbnail_url, 'url', p.url)) AS photos
+  FROM styles AS s
+  INNER JOIN photos AS p
+  ON s.id=p."styleID"
+  WHERE s."productID" = ${productID}
+  GROUP BY s.id`
+
+  db.query(queryStylesAndPhotos, (err, styles) => {
+    if (err) {
+      console.log(err)
+    }
+    callback(null, styles)
+  })
+
+  // const queryPhotos = `SELECT
+  // json_build_object('photos', json_agg(json_build_object('thumbnail_url', p.thumbnail_url, 'url', p.url)))
+  // FROM photos AS p
+  // INNER JOIN styles AS s
+  // ON s.id = p."styleID"
+  // WHERE s.id=${styleID}`
+
+  // const querySkus = `SELECT
+  // json_build_object(skus.id, json_build_object('quantity', skus.quantity, 'size', skus.size))
+  // FROM skus
+  // INNER JOIN styles AS s
+  // ON s.id = skus."styleID"
+  // WHERE s.id=${styleID}
+  // GROUP BY skus.id;`
+}
+
 module.exports = {
   getAllProducts: function (page, count, callback) {
     // Skip the specified amount of rows by an offset
@@ -33,26 +65,24 @@ module.exports = {
     })
   },
 
-  getStylesByID: function (productID, styleID, callback) {
-    const queryStyles = `SELECT
-    json_agg(json_build_object('id', s.id,'name', s.name, 'original_price', s.original_price,'sale_price', s.sale_price,'default', s.default_style))
+  getStylesByID: function (productID, callback) {
+    // grabData(productID, callback)
+    const queryStyles = `SELECT s.id, s.name, s.original_price, s.sale_price, s.default_style,
+    jsonb_agg(DISTINCT jsonb_build_object('thumbnail_url', p.thumbnail_url, 'url', p.url)) AS photos,
+    jsonb_object_agg(u.id, to_jsonb(u) - 'styleID' - 'id') AS skus
     FROM styles AS s
+    INNER JOIN photos AS p
+    ON s.id=p."styleID"
+    INNER JOIN skus AS u
+    ON s.id=u."styleID"
     WHERE s."productID" = ${productID}
-    GROUP BY s.id;`
+    GROUP BY s.id`
 
-    const queryPhotos = `SELECT
-    json_build_object('photos', json_agg(json_build_object('thumbnail_url', p.thumbnail_url, 'url', p.url)))
-    FROM photos AS p
-    INNER JOIN styles AS s
-    ON s.id = p."styleID"
-    WHERE s.id=${styleID}`
-
-    const querySkus = `SELECT
-    json_build_object(skus.id, json_build_object('quantity', skus.quantity, 'size', skus.size))
-    FROM skus
-    INNER JOIN styles AS s
-    ON s.id = skus."styleID"
-    WHERE s.id=${styleID}
-    GROUP BY skus.id;`
+    db.query(queryStyles, (err, results) => {
+      if (err) {
+        console.log(`There was an error retrieving styles for product id ${productID}\n${err}`)
+      }
+      callback(null, results)
+    })
   },
 }
