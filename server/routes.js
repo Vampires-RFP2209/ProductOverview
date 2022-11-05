@@ -8,9 +8,9 @@ const { getProducts, getOneProduct, getStyles } = require('./controllers/index')
 router.get('/', getProducts)
 
 // product information for one product
-router.get('/:product_id', getOneProduct)
+router.get('/:productID', getOneProduct)
 
 // product styles
-router.get('/:product_id/styles', getStyles)
+router.get('/:productID/styles', getStyles)
 
 module.exports = router
