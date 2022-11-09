@@ -8,7 +8,8 @@
     "db:reset": "psql -u postgres -d products -a -f schema.sql",
     "test": "jest",
     "coverage": "jest --coverage",
-    "coverage:summary": "jest --coverage --coverageReporters=text-summary || exit 0"
+    "coverage:summary": "jest --coverage --coverageReporters=text-summary || exit 0",
+    "k6": "k6 run ./k6_tests/script.js"
   },
   "repository": {
     "type": "git",
@@ -39,12 +40,14 @@
   "dependencies": {
     "@types/jest": "^29.2.2",
     "axios": "^1.1.3",
+    "bluebird": "^3.7.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.7.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
+    "path": "^0.12.7",
     "pg": "^8.8.0"
   }
 }
