@@ -2,7 +2,7 @@
 
 ## About
 
-This project comprises of replacing the existing API for a retail web portal with a back end system that can fully support a substantial data set and can meet the demands of production scale.
+This project comprises of replacing the existing API for a retail web portal with a back end system that can fully support a substantial products data set and can meet the demands of production scale.
 
 This project was built with:
 
@@ -222,7 +222,7 @@ Metrics reported are the median values. Error rate being < 1% for all queries.
 
 ## Local Development Environment
 
-To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, and `DB_DATABASE`.
+To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_DATABASE`, and `DB_PORT`.
 
 ## Environment Variables
 
