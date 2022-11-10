@@ -1,4 +1,4 @@
-# System Design Capstone - Products
+# System Design Capstone
 
 ## About
 
@@ -16,18 +16,17 @@ This project was built with:
 
 ## Table of Contents
 
-- [System Design Capstone - Products](#system-design-capstone---products)
+- [System Design Capstone](#system-design-capstone)
   - [About](#about)
   - [Table of Contents](#table-of-contents)
   - [Database](#database)
-    - [Performance](#performance)
+  - [Local Development Environment](#local-development-environment)
   - [Environment Variables](#environment-variables)
-  - [Environment Variables](#environment-variables-1)
   - [Contributors](#contributors)
 
 ## Database
 
-### Performance
+<b>Performance</b>
 
 `GET /products`\
 Retrieves general product information on a user specified given page and a count
@@ -51,6 +50,10 @@ Optimization techniques involved creating an index and changing from a single cl
 
 Metrics reported are the median values, error rate being < 1.0% for all queries.
 
+## Local Development Environment
+
+To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, and `DB_DATABASE`.
+
 ## Environment Variables
 
 `PORT` - The port that the server will run on | <em>(default: 4000)</em>\
@@ -59,10 +62,6 @@ Metrics reported are the median values, error rate being < 1.0% for all queries.
 `DB_PASS` - The password to the PostgreSQL database\
 `DB_DATABASE` - The name of the PostgreSQL database\
 `DB_PORT` - The port that the server will run on | <em>(default: 5432)</em>
-
-## Environment Variables
-
-To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, and `DB_DATABASE`.
 
 ## Contributors
 
