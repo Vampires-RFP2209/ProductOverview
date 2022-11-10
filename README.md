@@ -2,7 +2,7 @@
 
 ## About
 
-This project comprises of a complete redesign of our client's eCommerce retail web-portal to help sales and conversion numbers.
+This project comprises of replacing the existing API for a retail eCommerce platform with a back end system that can fully support a substantial data set and can meet the demands of production scale.
 
 This project was built with:
 
@@ -46,7 +46,7 @@ Retrieves all styles for one product, retrieves all photos for each style, and r
 - Original - `18s`
 - Optimized - `1.1s`
 
-Optimization techniques involved using an index and switching from a single client instance to a pool of client instances, resulting in improved performance when querying the database over many tables.\
+Optimization techniques involved creating an index and changing from a single client instance to a pool of client instances, resulting in improved performance when querying the database over many tables.
 
 Metrics reported are the median values, error rate being < 1.0% for all queries.
 
