@@ -31,14 +31,15 @@ This project was built with:
 
 ## API Endpoints
 
-This Express application is serving product data for a retail web portal. Listed below are the endpoint routes built, serving SQL data loaded from `.csv` files with over 5 million records total.
+This Express application is serving product data for a retail web portal. Listed below are the endpoint routes built, serving SQL data loaded from `.csv` files.
 
 ## Products API
 
 ### Product List
 
-`GET /products`\
 Retrieves the list of products.
+
+`GET /products`
 
 Parameters
 
@@ -193,27 +194,30 @@ Response
 
 <b>Performance</b>
 
-`GET /products`\
+`GET /products`
+
 Retrieves general product information on a user specified given page and a count
 
 - Original - `6ms`
 - No optimization needed and using an index didn't provide any performance improvements
 
-`GET /products/:product_id`\
+`GET /products/:product_id`
+
 Retrieves detailed product information of a product, given a specified product ID number through a single query
 
 - Original - `90ms`
 - Optimized - `71ms`
 
-`GET /products/:product_id/styles`\
-Retrieves all styles for one product, retrieves all photos for each style, and retrieves all sku information for all styles through a single query
+`GET /products/:product_id/styles`
+
+Retrieves all styles for one product, retrieves all photos for all styles, and retrieves all sku information for all styles through a single query
 
 - Original - `18s`
 - Optimized - `1.1s`
 
 Optimization techniques involved aggregating queries, creating indexes, and changing from a single client instance to a pool of client instances. These changes resulted in improved performance when querying the database over many tables.
 
-Metrics reported are the median values. Error rate being < 1.0% for all queries.
+Metrics reported are the median values. Error rate being < 1% for all queries.
 
 ## Local Development Environment
 
