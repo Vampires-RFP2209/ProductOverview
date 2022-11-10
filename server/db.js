@@ -9,7 +9,7 @@ const db = new Pool({
   database: process.env.DB_DATABASE,
 })
 
-const PORT = process.env.DB_PORT || 5432
+const PORT = process.env.DB_PORT
 
 db.connect((err) => {
   if (err) {

@@ -226,12 +226,12 @@ To run the server locally for development, please specify in a .env file the `DB
 
 ## Environment Variables
 
-`PORT` - The port that the server will run on | <em>(default: 4000)</em>\
-`DB_HOST` - The host of the PostgreSQL database\
+`PORT` - The port that the express server will run on <em>(default: 4000)</em>\
+`DB_HOST` - The host name / address of the PostgreSQL database\
 `DB_USER` - The user of the PostgreSQL database\
 `DB_PASS` - The password to the PostgreSQL database\
 `DB_DATABASE` - The name of the PostgreSQL database\
-`DB_PORT` - The port that the server will run on | <em>(default: 5432)</em>
+`DB_PORT` - The port that the PostgreSQL database will run on
 
 ## Contributors
 
