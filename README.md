@@ -222,7 +222,7 @@ Metrics reported are the median values. Error rate being < 1% for all queries.
 
 ## Local Development Environment
 
-To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_DATABASE`, and `DB_PORT`.
+To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_DATABASE`, and `DB_PORT`. Please feel free to make a copy of `example.env`.
 
 ## Environment Variables
 
