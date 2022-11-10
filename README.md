@@ -18,95 +18,54 @@ This project was built with:
 - [System Design Capstone - Products](#system-design-capstone---products)
   - [About](#about)
   - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-    - [Product Overview](#product-overview)
-    - [Related Products](#related-products)
-    - [Questions & Answers](#questions--answers)
-  - [Getting Started](#getting-started)
+  - [Database](#database)
+    - [Performance](#performance)
+  - [Environment Variables](#environment-variables)
+  - [Environment Variables](#environment-variables-1)
   - [Contributors](#contributors)
 
-## Features
+## Database
 
-### Product Overview
+### Performance
 
-| Image Gallery & Style Selector
-:-:
-<img src="https://user-images.githubusercontent.com/104607182/198860061-c1e5c1b4-bf6c-4679-965d-7ada004ee1ed.gif" width="400"> |
+`GET /products`\
+Retrieves general product information on a user specified given page and a count
 
-<b>Features</b>
+- Original - `6ms`
+- No optimization needed and using an index didn't provide any performance improvements
 
-- Product overview renders general product information such as category, title, and price
-- Image gallery carousel with the ability to browse between, zoom and expand photos
-- Style selector dynamically lists out styles based on the current product
-- Add to cart feature that allows users to select a size & quantity and checkout
-- Responsive to different browser sizes and mobile friendly
+`GET /products/:id`\
+Retrieves detailed product information of a product, given a specified product ID number through a single query that aggregates all the relevant input sets
 
-Built by <a href="https://github.com/quyencodes">Quyen Hoang</a>
+- Original - `90ms`
+- Optimized - `71ms`
 
-### Related Products
+`GET /products/:id/styles`\
+Retrieves all styles for one product, retrieves all photos for each style, and retrieves all sku information for all styles through a single query that aggregates all the relevant input sets.
 
-| Related Products & Outfit List
-:-:
-<img src="https://user-images.githubusercontent.com/104607182/198860662-9e38dbf9-ba7e-448d-a0d4-9a84aa6a4cd6.gif" width="400">|
+- Original - `18s`
+- Optimized - `1.1s`
 
-<b>Features</b>
+Optimization techniques involved using an index and switching from a single client instance to a pool of client instances, resulting in improved performance when querying the database over many tables.\
 
-- Dynamically generates related items based on the current product in display
-- Product cards that contain related product information and will reroute user when clicked
-- When the star icon is clicked, a modal will appear that displays comparison information
-- Interactive carousel that displays 4 product cards at a time
-- Outfit list that allows users to keep track of their desired item(s), the list persists between user sessions
+Metrics reported are the median values, error rate being < 1.0% for all queries.
 
-Built by <a href="https://github.com/lgoodcode">Lawrence Good</a>
+## Environment Variables
 
-### Questions & Answers
+`PORT` - The port that the server will run on | <em>(default: 4000)</em>\
+`DB_HOST` - The host of the PostgreSQL database | <em>(recommended: localhost)</em>\
+`DB_USER` - The user of the PostgreSQL database\
+`DB_PASS` - The password to the PostgreSQL database\
+`DB_DATABASE` - The name of the PostgreSQL database\
+`DB_PORT` - The port that the server will run on | <em>(default: 5432)</em>
 
-|                                                          Add an Answer Modal                                                           |                                                        Navigating the Q&A List                                                         |
-| :------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: |
-| ![chrome-capture-2022-9-29 (1)](https://user-images.githubusercontent.com/97919673/198855342-c6183371-94ab-4566-8c86-a955e81ae510.gif) | ![chrome-capture-2022-9-29 (2)](https://user-images.githubusercontent.com/97919673/198855434-af9990a9-5703-43e1-904c-4613bf235f70.gif) |
+## Environment Variables
 
-<b>Features</b>
-
-- Load additional questions and answers on click
-- Search functionality for filtering questions
-- Add new questions and answers by filling out forms in a pop-up modal
-- Rate helpful or report questions or answers on click
-
-Built by <a href=https://github.com/jake-manning>Jake Manning</a>
-
-## Getting Started
-
-1. Clone the repo
-   ```bash
-   $ git clone https://github.com/FruitLoops-Hackreactor/fruitloops.git
-   ```
-2. Install NPM packages
-   ```bash
-   $ npm install
-   ```
-3. Create your .env file (make a copy from example.env)
-   ```bash
-   GITHUB_TOKEN='GITHUB TOKEN HERE'
-   CLOUD_NAME='CLOUD NAME HERE'
-   ```
-4. Follow the instructions in [this tutorial](https://cloudinary.com/documentation/upload_widget_tutorial) to get a Cloudinary ID and configure the upload preset
-5. Run locally in development mode
-   ```bash
-   npm run dev
-   ```
-6. Project will be deployed on a localhost server, navigate to your browser and enter in the url
-   ```bash
-   http://localhost:3000
-   ```
-
-<b>Environment Variables</b>
-
-`GITHUB_TOKEN` - The token used to authenticate with API\
-`CLOUD_NAME` - The cloud name used to upload media to cloudinary
+To run the server locally for development, please specify in a .env file the `DB_HOST`, `DB_USER`, `DB_PASS`, and `DB_DATABASE`.
 
 ## Contributors
 
-**Quyen Hoang (Products)**\
+**Quyen Hoang**\
 <img src="https://user-images.githubusercontent.com/104607182/198861294-a3c1a341-0f11-4cdd-bba1-c4a254c40fc6.png" alt="Quyen Hoang" width="72">\
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/quyenduhoang/)
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/quyencodes/)

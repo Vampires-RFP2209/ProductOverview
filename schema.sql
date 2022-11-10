@@ -104,3 +104,10 @@ COPY skus (id, "styleID", size, quantity)
 FROM '/Users/quyenhoang/project-atelier-products/skus.csv'
 DELIMITER ','
 CSV HEADER;
+
+-- create index name
+CREATE INDEX products_id_idx ON product (id);
+CREATE INDEX styles_id_idx ON styles (id, "productID");
+CREATE INDEX features_id_idx ON features (id, "productID");
+CREATE INDEX photos_id_idx ON photos (id, "styleID");
+CREATE INDEX skus_id_idx ON skus (id, "styleID");
