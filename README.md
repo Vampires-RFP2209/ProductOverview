@@ -123,7 +123,7 @@ Response
 
 ### Product Styles
 
-Returns all the styles available for a given product
+Returns all the styles available for a given product.
 
 `GET /products/:product_id/styles`
 
@@ -181,6 +181,7 @@ Response
       // ...
     }
   }
+  // ...
 ]
 ```
 
@@ -203,7 +204,7 @@ Retrieves general product information on a user specified given page and a count
 
 `GET /products/:product_id`
 
-Retrieves detailed product information of a product, given a specified product ID number through a single query
+Retrieves detailed product information, given a specified product ID number through a single query
 
 - Original - `90ms`
 - Optimized - `71ms`
