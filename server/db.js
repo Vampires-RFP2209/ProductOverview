@@ -9,14 +9,14 @@ const db = new Pool({
   database: process.env.DB_DATABASE,
 })
 
-const PORT = process.env.DB_PORT
-
 db.connect((err) => {
   if (err) {
     console.log(err)
     return
   }
-  console.log(`Successfully connected to ${process.env.DB_DATABASE} database on port ${PORT}`)
+  console.log(
+    `Successfully connected to ${process.env.DB_DATABASE} database on port ${process.env.DB_PORT}`
+  )
 })
 
 // db.query(`select * from product`, (res, err) => {

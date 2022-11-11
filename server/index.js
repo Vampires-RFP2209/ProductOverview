@@ -9,9 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/products', router)
-app.get('/loaderio-67ce1f18f770175e36b376c343a97595', (req, res) =>
-  res.send('loaderio-67ce1f18f770175e36b376c343a97595')
-)
+app.get(process.env.TEST_LOADER, (req, res) => res.send(process.env.TEST_LOADER))
 
 // app.get('/', (req, res) => {
 //   res.send('hello')
