@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const router = require('./routes')
+const path = require('path')
 require('dotenv').config()
 
 // console.log(__dirname)
@@ -8,8 +9,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use('/products', router)
 app.get(process.env.TEST_LOADER, (req, res) => res.send(process.env.TEST_LOADER))
+app.use('/products', router)
 
 // app.get('/', (req, res) => {
 //   res.send('hello')
