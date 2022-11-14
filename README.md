@@ -237,7 +237,7 @@ Optimized Performance
 - [x] **Throughput:** 500 RPS
 - [x] **Latency:** 1975ms
 
-<b>Performance Conclusion</b>
+<b>Performance Results</b>
 
 Optimization techniques involved aggregating queries, creating indexes, and changing from a single client instance to a pool of client instances. A second iteration of optimization involved reindexing columns, as multicolumn indexing was unlikely helpful. These changes resulted in improved performance when querying the database over many tables.
 
