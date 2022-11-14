@@ -13,7 +13,7 @@ const randomPage = () => getRandom(MAX_PAGES)
 const randomCount = () => getRandom(MAX_COUNT)
 
 export const options = {
-  vus: 10,
+  vus: 500,
   duration: '60s',
 
   thresholds: {
@@ -42,8 +42,8 @@ export const options = {
 //   sleep(1)
 // }
 
-// GET styles endpoint /products/:product_id/styles
-export default function () {
-  http.get(`${ENDPOINT}/products/${randomId()}/styles`)
-  sleep(1)
-}
+// // GET styles endpoint /products/:product_id/styles
+// export default function () {
+//   http.get(`${ENDPOINT}/products/${randomId()}/styles`)
+//   sleep(1)
+// }

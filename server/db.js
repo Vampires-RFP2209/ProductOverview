@@ -19,15 +19,6 @@ db.connect((err) => {
   )
 })
 
-// db.query(`select * from product`, (res, err) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log(res.rows)
-//   }
-//   db.end()
-// })
-
 module.exports = {
   db,
 }
