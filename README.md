@@ -1,4 +1,4 @@
-# System Design Capstone
+# Atelier Products | System Design
 
 ## About
 
@@ -16,7 +16,7 @@ This project was built with:
 
 ## Table of Contents
 
-- [System Design Capstone](#system-design-capstone)
+- [Atelier Products | System Design](#atelier-products--system-design)
   - [About](#about)
   - [Table of Contents](#table-of-contents)
   - [API Endpoints](#api-endpoints)
