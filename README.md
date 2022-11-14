@@ -199,26 +199,51 @@ Response
 
 Retrieves general product information on a user specified given page and a count
 
-- Original - `6ms`
-- No optimization needed and using an index didn't provide any performance improvements
+Original Performance
+
+- [x] **Throughput:** 1700 RPS
+- [x] **Latency:** 2006ms
+
+Optimized Performance
+
+- [x] **Throughput:** 200 RPS
+- [x] **Latency:** 2046ms
 
 `GET /products/:product_id`
 
 Retrieves detailed product information, given a specified product ID number through a single query
 
-- Original - `90ms`
-- Optimized - `71ms`
+Original Performance
+
+- [x] **Throughput:** 250 RPS
+- [x] **Latency:** 2196ms
+
+Optimized Performance
+
+- [x] **Throughput:** 2000 RPS
+- [x] **Latency:** 2034ms
 
 `GET /products/:product_id/styles`
 
 Retrieves all styles for one product, retrieves all photos for all styles, and retrieves all sku information for all styles through a single query
 
-- Original - `18s`
-- Optimized - `1.1s`
+Original Performance
 
-Optimization techniques involved aggregating queries, creating indexes, and changing from a single client instance to a pool of client instances. These changes resulted in improved performance when querying the database over many tables.
+- [x] **Throughput:** 100 RPS
+- [x] **Latency:** 18s
 
-Metrics reported are the median values. Error rate being < 1% for all queries.
+Optimized Performance
+
+- [x] **Throughput:** 500 RPS
+- [x] **Latency:** 1975ms
+
+<b>Performance Conclusion</b>
+
+Optimization techniques involved aggregating queries, creating indexes, and changing from a single client instance to a pool of client instances. A second iteration of optimization involved reindexing columns, as multicolumn indexing was unlikely helpful. These changes resulted in improved performance when querying the database over many tables.
+
+In the `/product/:product_id` endpoint, we observe a 8x increase in RPS. In addition, in the `/product/:product_id/styles` endpoint, we observe a 5x increase in RPS and a significant improvement in overall latency to meet target performance.
+
+Metrics reported are the average values. Error rate being < 1% for all queries.
 
 ## Local Development Environment
 
