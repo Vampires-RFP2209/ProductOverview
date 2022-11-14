@@ -206,7 +206,7 @@ Original Performance
 
 Optimized Performance
 
-- [x] **Throughput:** 200 RPS
+- [x] **Throughput:** 2000 RPS
 - [x] **Latency:** 2046ms
 
 `GET /products/:product_id`
@@ -241,7 +241,7 @@ Optimized Performance
 
 Optimization techniques involved aggregating queries, creating indexes, and changing from a single client instance to a pool of client instances. A second iteration of optimization involved reindexing columns, as multicolumn indexing was unlikely helpful. These changes resulted in improved performance when querying the database over many tables.
 
-In the `/product/:product_id` endpoint, we observe a 8x increase in RPS. In addition, in the `/product/:product_id/styles` endpoint, we observe a 5x increase in RPS and a significant improvement in overall latency to meet target performance.
+In the `/products` endpoint, we observe a slight improvement in RPS. The `/products/:product_id` endpoint we realized an 8x increase in RPS. Lastly, in the `/products/:product_id/styles` endpoint, we observe a 5x increase in RPS and a significant improvement in overall latency to meet target performance.
 
 Metrics reported are the average values. Error rate being < 1% for all queries.
 
